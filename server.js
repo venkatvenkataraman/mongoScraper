@@ -31,9 +31,18 @@ app.use(express.static("public"));
 // By default mongoose uses callbacks for async queries, we're setting it to use promises (.then syntax) instead
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/mongoScraper", {
-  useMongoClient: true
-});
+var databaseUri = "mongodb://localhost/mongoScraper";
+// ---  for local or heroku
+if (process.env.MONGODB_URI) {
+  //THIS EXECUTES IF THIS IS BEING EXECUTED IN YOUR HEROKU APP
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  //THIS EXECUTES IF THIS IS BEING EXECUTED ON YOUR LOCAL MACHINE
+  mongoose.connect(databaseUri, {
+    useMongoClient: true });
+}
+//---End of database configuration ---
+
 
 // Routes
 // A GET route for displaying the scraped articles in the database on the website
