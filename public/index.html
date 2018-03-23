@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Mongo Scraper</title>
+      <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
+      <style>
+        /* a, a:link, a:visited, a:focus, a:hover, a:active{
+          color:blue;
+          text-decoration: underline; 
+          cursor: crosshair;
+        } */
+        body{background-color:#e19d0b6e;
+             margin: 0; 
+        }
+        .box{
+              width:2000px;
+              height:40px;
+              display: inline-block;
+              vertical-align: middle;
+              margin: 10px 0;
+        }
+        .red{
+          background:#aa1919;
+        }
+        #textInRedBox {
+          color: white;
+          font-size: 20px;
+          font-weight: bold;
+          margin:15px;
+        }
+        button {
+            color: #f2d495;
+            background-color: blue;
+            padding: 10px;
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+        .saveArticle {
+            color: #f2d495;
+            background-color: blue;
+            display: inline-block;
+            /* margin-left: 200px; */
+            float: right;
+        }
+        h2{
+          margin-left: 20px;
+        }
+        h3 {
+          color:white;
+          background-color: #721414db;
+        }
+        #wrapper {
+          width: 0 auto;
+          /* margin-left: 0;
+          margin-right: auto; */
+          /* padding-top: 5%; */
+        }
+        #articles {
+          display: inline-block;
+          overflow: auto;
+          margin-left: 20px;
+          /* width: 60%; */
+          height: 700px;
+        }
+        #articles div a {
+          color:blue;
+          text-decoration: underline;
+          display: inline-block;
+        }
+        /* #notes {
+          float: right;
+          width: 30%;
+        } */
+        textarea, input {
+          display: block;
+          width: 100%;
+          background-color: #FCF5C7;
+        }
+        input {
+          height: 36px;
+          font-size: 24px;
+        }
+        textarea {
+          height: 200px;
+          font-size: 18px;
+        }
+      </style>
+      <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"> -->
+      <!-- <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Nunito:900" rel="stylesheet"> -->
+      <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body class = "body">
+      <div class="navWrapper" id="wrapper">
+          <img src="./bannerPS.png" class="banner" alt="banner">
+      </div>
+      <div class="box red">
+          <span id=textInRedBox>  Mongo Scraper      </span>
+          <button id="home" type="button">Home</button>
+          <button id="savedArticles" type="button">Saved Articles</button>
+          <button id="scrape" type="button">SCRAPE NEW ARTICLES!</button>
+      </div>
+      <h2>Articles</h2>
+      <div id="articles"></div>
+      <!-- <div id="notes"></div> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="./app.js"></script>
+  </body>
+</html>
