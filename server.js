@@ -17,7 +17,7 @@ var db = require("./models");
 // var Note = require("./models/Note.js");
 // var Article = require("./models/Article.js");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
@@ -131,6 +131,26 @@ app.post("/articles/save/:id", function(req, res) {
     }
   });
 });
+
+//GET saved articles 
+app.get("/saved", function(req, res) {
+  db.Article.find({articleSaved: true})
+    .then(function(dbArticle) {
+      // If we were able to successfully find Articles, send them back to the client
+      res.json(dbArticle);
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+  }); //app.get "/"
+//     var hbsObject = {
+//       article: data
+//     };
+//     console.log(hbsObject);
+//     res.render("home", hbsObject);
+//   });
+// });
 
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {

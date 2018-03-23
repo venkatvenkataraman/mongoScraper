@@ -54,6 +54,45 @@ $(document).on("click", "#scrape", function() {
   // $("#bodyinput").val("");
 });
 
+//Handle Scrape button
+// $("#scrape").on("click", function() {
+//   $.ajax({
+//       method: "GET",
+//       url: "/scrape",
+//   }).done(function(data) {
+//       console.log(data)
+//       window.location = "/"
+//   })
+// });
+
+//Display Saved Articles
+//Handle Save Article button
+// $("#savebuttonid").on("click", function() {
+  $(document).on("click", "#savedArticles", function() {  
+    $.ajax({
+        method: "GET",
+        url: "/saved"
+    })
+    // .then(function(data) {
+    //   res.json(data);
+    // });
+    .done(function(data) {
+        window.location = "/saved";
+        // for (var i = 0; i < data.length; i++) {
+        //   // Display the apropos information on the page
+        //   $("#articles").append(
+        //     //SECOND VERSION
+        //     "<h3>" + data[i].title + "</h3>" +
+        //     '<a href="'+ data[i].link + '">' + data[i].link +'</a>'  + 
+        //     "<p>" + data[i].summary + "</p>" +
+        //     '<button class="saveArticle" savebuttonid=' + data[i]._id + ' type="button">Save Article</button>' +
+        //     "<br><br>"
+        //   );
+        // }
+    })
+  });
+  
+
 
 // // Whenever someone clicks a p tag
 // $(document).on("click", "p", function() {
@@ -124,73 +163,59 @@ $(document).on("click", "#savenote", function() {
 
 
 
+// //Set clicked nav option to active
+// $(".navbar-nav li").click(function() {
+//  $(".navbar-nav li").removeClass("active");
+//  $(this).addClass("active");
+// });
 
 
 
+// //Handle Delete Article button
+// $(".delete").on("click", function() {
+//   var thisId = $(this).attr("data-id");
+//   $.ajax({
+//       method: "POST",
+//       url: "/articles/delete/" + thisId
+//   }).done(function(data) {
+//       window.location = "/saved"
+//   })
+// });
 
-//Handle Scrape button
-$("#scrape").on("click", function() {
-  $.ajax({
-      method: "GET",
-      url: "/scrape",
-  }).done(function(data) {
-      console.log(data)
-      window.location = "/"
-  })
-});
+// //Handle Save Note button
+// $(".saveNote").on("click", function() {
+//   var thisId = $(this).attr("data-id");
+//   if (!$("#noteText" + thisId).val()) {
+//       alert("please enter a note to save")
+//   }else {
+//     $.ajax({
+//           method: "POST",
+//           url: "/notes/save/" + thisId,
+//           data: {
+//             text: $("#noteText" + thisId).val()
+//           }
+//         }).done(function(data) {
+//             // Log the response
+//             console.log(data);
+//             // Empty the notes section
+//             $("#noteText" + thisId).val("");
+//             $(".modalNote").modal("hide");
+//             window.location = "/saved"
+//         });
+//   }
+// });
 
-//Set clicked nav option to active
-$(".navbar-nav li").click(function() {
- $(".navbar-nav li").removeClass("active");
- $(this).addClass("active");
-});
-
-
-
-//Handle Delete Article button
-$(".delete").on("click", function() {
-  var thisId = $(this).attr("data-id");
-  $.ajax({
-      method: "POST",
-      url: "/articles/delete/" + thisId
-  }).done(function(data) {
-      window.location = "/saved"
-  })
-});
-
-//Handle Save Note button
-$(".saveNote").on("click", function() {
-  var thisId = $(this).attr("data-id");
-  if (!$("#noteText" + thisId).val()) {
-      alert("please enter a note to save")
-  }else {
-    $.ajax({
-          method: "POST",
-          url: "/notes/save/" + thisId,
-          data: {
-            text: $("#noteText" + thisId).val()
-          }
-        }).done(function(data) {
-            // Log the response
-            console.log(data);
-            // Empty the notes section
-            $("#noteText" + thisId).val("");
-            $(".modalNote").modal("hide");
-            window.location = "/saved"
-        });
-  }
-});
-
-//Handle Delete Note button
-$(".deleteNote").on("click", function() {
-  var noteId = $(this).attr("data-note-id");
-  var articleId = $(this).attr("data-article-id");
-  $.ajax({
-      method: "DELETE",
-      url: "/notes/delete/" + noteId + "/" + articleId
-  }).done(function(data) {
-      console.log(data)
-      $(".modalNote").modal("hide");
-      window.location = "/saved"
-  })
-});
+// //Handle Delete Note button
+// $(".deleteNote").on("click", function() {
+//   var noteId = $(this).attr("data-note-id");
+//   var articleId = $(this).attr("data-article-id");
+//   $.ajax({
+//       method: "DELETE",
+//       url: "/notes/delete/" + noteId + "/" + articleId
+//   })
+//   .done(function(data) {
+//       console.log(data)
+//       $(".modalNote").modal("hide");
+//       window.location = "/saved"
+//   });
+// });
