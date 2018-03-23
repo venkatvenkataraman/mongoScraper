@@ -13,6 +13,9 @@ var cheerio = require("cheerio");
 
 // Require all models
 var db = require("./models");
+// // Requiring Note and Article models
+// var Note = require("./models/Note.js");
+// var Article = require("./models/Article.js");
 
 var PORT = 3000;
 
@@ -43,6 +46,17 @@ if (process.env.MONGODB_URI) {
 }
 //---End of database configuration ---
 
+var dbase = mongoose.connection;
+
+//show any mongoose errors
+dbase.on('error', function(err){
+  console.log("Mongoose Error: ", err);
+});
+
+//once logged in to the db through mongoose, log a success message
+dbase.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
 
 // Routes
 // A GET route for displaying the scraped articles in the database on the website
